@@ -4,7 +4,7 @@
   "description": "A FoundryVTT Package to help automate point buy",
   "main": "dnd5e-point-buy.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint:fix": "eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/JPMeehan/dnd5e-point-buy/issues"
   },
-  "homepage": "https://github.com/JPMeehan/dnd5e-point-buy#readme"
+  "homepage": "https://github.com/JPMeehan/dnd5e-point-buy#readme",
+  "dependencies": {
+    "eslint": "^9.20.1"
+  }
 }
