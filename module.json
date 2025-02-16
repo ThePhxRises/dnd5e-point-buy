@@ -1,0 +1,50 @@
+{
+  "id": "dnd5e-point-buy",
+  "title": "dnd5e-point-buy",
+  "version": "0.8.0",
+  "compatibility": {
+    "minimum": "12",
+    "verified": "13"
+  },
+  "esmodules": ["dnd5e-point-buy.mjs"],
+  "styles": ["styles/dnd5e-point-buy.css"],
+  "languages": [{
+    "lang": "en",
+    "name": "English",
+    "path": "lang/en.json"
+  }],
+  "description": "Simplify and automate point buy for dnd5e",
+  "authors": [
+    {
+      "name": "Joseph M.",
+      "url": "https://joseph-meehan.carrd.co/",
+      "discord": "chaosos",
+      "flags": {}
+    }
+  ],
+  "url": "http://github.com/JPMeehan/dnd5e-point-buy",
+  "license": "LICENSE.md",
+  "readme": "README.md",
+  "bugs": "http://github.com/JPMeehan/dnd5e-point-buy/issues",
+  "changelog": "CHANGELOG.md",
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "4.0",
+          "verified": "4.3"
+        }
+      }
+    ]
+  },
+  "manifest": "https://github.com/JPMeehan/dnd5e-point-buy/releases/latest/download/module.json",
+  "download": "AUTOMATIC",
+  "flags": {
+    "hotReload": {
+      "extensions": ["css", "html", "hbs", "json"],
+      "paths": ["css", "lang", "templates"]
+    }
+  }
+}
