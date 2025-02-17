@@ -6,6 +6,9 @@ class PointBuyCalculator extends api.HandlebarsApplicationMixin(sheets.ActorShee
   /** @override */
   static DEFAULT_OPTIONS = {
     classes: ["standard-form", "pb-calculator"],
+    window: {
+      icon: "fa-solid fa-calculator"
+    },
     actions: {
       reset: this.#reset
     },
