@@ -1,0 +1,12 @@
+.pb-calculator {
+  & table {
+    margin: 0;
+    & input[type="number"] {
+      width: 40px;
+      text-align: right;
+    }
+    .ability-number {
+      text-align: center;
+    }
+  }
+}
