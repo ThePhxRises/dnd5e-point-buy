@@ -192,7 +192,7 @@ Hooks.once("init", () => {
     name: "DND5EPointBuy.PointCosts.name",
     hint: "DND5EPointBuy.PointCosts.hint",
     scope: "world",
-    config: true,
+    config: false,
     type: new fields.SchemaField({
       8: pointField(),
       9: pointField(),
