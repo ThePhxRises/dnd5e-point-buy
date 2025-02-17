@@ -7,7 +7,6 @@
       <th class="ability-number">{{a.label}}</th>
       {{/each}}
       <th class="ability-number">{{localize "DND5EPointBuy.AbilityTotal"}}</th>
-      <th class="ability-number">{{localize "DND5E.AbilityModifier"}}</th>
     </tr>
   </thead>
   <tbody>
@@ -20,8 +19,7 @@
       {{else}} <td class="ability-number"></td>
       {{/if}}
       {{/each}}
-      <td class="ability-number">{{value.total}}</td>
-      <td class="ability-number">{{numberFormat value.modifier sign=true}}</td>
+      <td class="ability-number">{{value.total}} ({{numberFormat value.modifier sign=true}})</td>
     </tr>
     {{/each}}
   </tbody>

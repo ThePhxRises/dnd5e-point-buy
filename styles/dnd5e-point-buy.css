@@ -3,7 +3,7 @@
     margin: 0;
     & input[type="number"] {
       width: 40px;
-      text-align: right;
+      text-align: center;
     }
     .ability-number {
       text-align: center;

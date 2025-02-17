@@ -158,6 +158,17 @@ class PointBuyCalculator extends api.HandlebarsApplicationMixin(sheets.ActorShee
     }, {});
     if (this.rendered) await this.render();
   }
+
+  _processFormData(event, form, formData) {
+    const advancements = this.#evaluateAdvancements();
+    for (const key of Object.keys(CONFIG.DND5E.abilities)) {
+      for (const v of Object.values(advancements)) {
+        formData.object[`system.abilities.${key}.value`] += v[key];
+      }
+    }
+
+    return super._processFormData(event, form, formData);
+  }
 }
 
 Hooks.once("init", () => {
@@ -216,7 +227,12 @@ function liToActor(html) {
   return game.actors.get(actorId);
 }
 
-Hooks.on("getEntryContextActorDirectory", (app, entries) => {
+/**
+ * Adds an entry to Character actors to open the Point Buy app
+ * @param {object} app
+ * @param {Array<object>} entries
+ */
+function addContextMenuEntries(app, entries) {
   const index = entries.findIndex(el => el.name === "OWNERSHIP.Configure");
 
   entries.splice(index, 0, {
@@ -231,4 +247,10 @@ Hooks.on("getEntryContextActorDirectory", (app, entries) => {
       return actor.type === "character";
     }
   });
-});
+}
+
+// v12
+Hooks.on("getActorDirectoryEntryContext", addContextMenuEntries);
+
+// v13
+Hooks.on("getEntryContextActorDirectory", addContextMenuEntries);
