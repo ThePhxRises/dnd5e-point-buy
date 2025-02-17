@@ -240,11 +240,12 @@ function addContextMenuEntries(app, entries) {
     icon: "<i class=\"fa-solid fa-calculator\"></i>",
     callback: (html) => {
       const actor = liToActor(html);
+      if (!actor) throw new Error("Could not find actor in world collection");
       new PointBuyCalculator({document: actor}).render({force: true});
     },
     condition: (html) => {
       const actor = liToActor(html);
-      return actor.type === "character";
+      return (actor.type === "character") && actor.isOwner;
     }
   });
 }
