@@ -18,6 +18,11 @@
 ### Known Issues
 -->
 
+## 0.9.0
+
+- Updated minimum compatibility to dnd5e 5.0 & Foundry v13
+- Adjusted context menu handling
+
 ## 0.8.1
 
 - Added ownership check for the context menu option

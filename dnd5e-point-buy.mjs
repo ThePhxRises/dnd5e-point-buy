@@ -220,35 +220,23 @@ Hooks.once("init", () => {
 });
 
 /**
- *
- * @param {HTMLElement} html
- * @returns {object}
- */
-function liToActor(html) {
-  if (html instanceof jQuery) html = html[0];
-  const actorId = html.dataset.entryId;
-  return game.actors.get(actorId);
-}
-
-/**
  * Adds an entry to Character actors to open the Point Buy app
  * @param {object} app
  * @param {Array<object>} entries
  */
 function addContextMenuEntries(app, entries) {
   const index = entries.findIndex(el => el.name === "OWNERSHIP.Configure");
+  const liToActor = (html) => game.actors.get(html.dataset.entryId);
 
   entries.splice(index, 0, {
     name: "DND5EPointBuy.MenuLabel",
     icon: "<i class=\"fa-solid fa-calculator\"></i>",
-    callback: (html) => {
-      const actor = liToActor(html);
-      if (!actor) throw new Error("Could not find actor in world collection");
-      new PointBuyCalculator({document: actor}).render({force: true});
-    },
     condition: (html) => {
       const actor = liToActor(html);
       return (actor.type === "character") && actor.isOwner;
+    },
+    callback: (html) => {
+      new PointBuyCalculator({document: liToActor(html)}).render({force: true});
     }
   });
 }
