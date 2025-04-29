@@ -253,8 +253,4 @@ function addContextMenuEntries(app, entries) {
   });
 }
 
-// v12
-Hooks.on("getActorDirectoryEntryContext", addContextMenuEntries);
-
-// v13
-Hooks.on("getEntryContextActorDirectory", addContextMenuEntries);
+Hooks.on("getActorContextOptions", addContextMenuEntries);
