@@ -1,0 +1,18 @@
+{
+    "DND5EPointBuy": {
+        "MenuLabel": "Point Buy",
+        "MaxPoints": {
+          "name": "Punti Massimi",
+          "hint": "Quanti punti possono spendere i giocatori per i punteggi caratteristica?"
+        },
+        "PointCosts": {
+          "name": "Costo Punti",
+          "hint": "Costo per ogni punteggio"
+        },
+        "Points": "Punti Totali",
+        "AbilityBase": "Base",
+        "AbilityTotal": "Totale",
+        "SubmitCalculation": "Salva",
+        "Reset": "Ripristina"
+    }
+}
