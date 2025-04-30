@@ -7,7 +7,10 @@
         },
         "PointCosts": {
           "name": "Costo Punti",
-          "hint": "Costo per ogni punteggio"
+          "label": "Configura Costo",
+          "hint": "Costo per ogni punteggio",
+          "title": "Regolazione costo di acquisto dei punti",
+          "body": "Modifica il costo (cumulativo) di ogni valore del punteggio di abilità"
         },
         "Points": "Punti Totali",
         "AbilityBase": "Base",
