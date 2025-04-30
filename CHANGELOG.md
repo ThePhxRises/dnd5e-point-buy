@@ -1,22 +1,9 @@
 # CHANGELOG
 
-<!--
-## [Unreleased]
+## 0.9.1
 
-### Added
-
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
-
-### Known Issues
--->
+- Updated Italian translation (Thanks @GregoryWarn)
+- Added Polish translation (Thanks @Lioheart)
 
 ## 0.9.0
 
