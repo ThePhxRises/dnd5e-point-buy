@@ -22,6 +22,7 @@
 
 - Updated minimum compatibility to dnd5e 5.0 & Foundry v13
 - Adjusted context menu handling
+- Added ability to adjust point costs for ability scores 8–15
 
 ## 0.8.1
 

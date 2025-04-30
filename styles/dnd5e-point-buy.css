@@ -10,3 +10,17 @@
     }
   }
 }
+
+.pointCostMenu {
+  .window-content {
+    padding-top: 0;
+  }
+  .form-group {
+    label {
+      text-align: right;
+    }
+    .form-fields {
+      justify-content: flex-start;
+    }
+  }
+}

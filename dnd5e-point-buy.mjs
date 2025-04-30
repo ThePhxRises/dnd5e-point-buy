@@ -2,7 +2,7 @@ const moduleId = "dnd5e-point-buy";
 const modulePath = (path) => `modules/${moduleId}/${path}`;
 const {api, sheets} = foundry.applications;
 
-class PointBuyCalculator extends api.HandlebarsApplicationMixin(sheets.ActorSheetV2) {
+class PointBuyCalculator extends api.HandlebarsApplicationMixin(sheets.ActorSheet) {
   /** @override */
   static DEFAULT_OPTIONS = {
     classes: ["standard-form", "pb-calculator"],
@@ -174,6 +174,100 @@ class PointBuyCalculator extends api.HandlebarsApplicationMixin(sheets.ActorShee
   }
 }
 
+class PointCostMenu extends api.HandlebarsApplicationMixin(api.Application) {
+  static DEFAULT_OPTIONS = {
+    id: moduleId + "pointCostMenu",
+    classes: ["standard-form", "pointCostMenu"],
+    tag: "form",
+    window: {
+      title: "DND5EPointBuy.PointCosts.title",
+      icon: "fa-solid fa-calculator"
+    },
+    position: {
+      width: 200
+    },
+    actions: {
+      resetDefaults: this.#resetDefaults
+    },
+    form: {
+      handler: this.#onSubmitSetting,
+      closeOnSubmit: true
+    }
+  }
+
+  static get defaultCosts() {
+    return {
+      8: 0,
+      9: 1,
+      10: 2,
+      11: 3,
+      12: 4,
+      13: 5,
+      14: 7,
+      15: 9
+    }
+  }
+
+  static PARTS = {
+    body: {
+      template: modulePath("templates/cost-menu.hbs")
+    },
+    footer: {
+      template: "templates/generic/form-footer.hbs"
+    }
+  }
+
+  /* -------------------------------------------- */
+  /*  Rendering                                   */
+  /* -------------------------------------------- */
+
+  _prepareContext(options) {
+    return {
+      pointCosts: options.reset ? this.constructor.defaultCosts : game.settings.get(moduleId, "pointCosts"),
+      buttons: [
+        {
+          type: "submit",
+          name: "submit",
+          icon: "fa-solid fa-floppy-disk",
+          label: "EDITOR.Save"
+        },
+        {
+          type: "reset",
+          name: "reset",
+          icon: "fa-solid fa-arrow-rotate-left",
+          label: "SETTINGS.Reset",
+          action: "resetDefaults",
+        }
+      ]
+    }
+  }
+
+  /* -------------------------------------------- */
+  /*  Event Handlers                              */
+  /* -------------------------------------------- */
+
+  /**
+   * @this PointCostMenu
+   * @param {PointerEvent} event  The originating click event
+   * @param {HTMLElement} target  The capturing HTML element which defines the [data-action]
+   */
+  static async #resetDefaults(event, target) {
+    this.render({ reset: true })
+  }
+
+  /**
+   * A form submission handler method.
+   * @this PointCostMenu
+   * @param {SubmitEvent|Event} event   The originating form submission or input change event
+   * @param {HTMLFormElement} form      The form element that was submitted
+   * @param {FormDataExtended} formData Processed data for the submitted form
+   */
+  static async #onSubmitSetting(event, form, formData) {
+    const data = foundry.utils.expandObject(formData.object).score
+    game.settings.set(moduleId, "pointCosts", data);
+  }
+}
+
 Hooks.once("init", () => {
   const m = game.modules.get(moduleId);
   m.PointBuyCalculator = PointBuyCalculator;
@@ -192,8 +286,6 @@ Hooks.once("init", () => {
   const pointField = () => new fields.NumberField({required: true, nullable: false});
 
   game.settings.register(moduleId, "pointCosts", {
-    name: "DND5EPointBuy.PointCosts.name",
-    hint: "DND5EPointBuy.PointCosts.hint",
     scope: "world",
     config: false,
     type: new fields.SchemaField({
@@ -206,17 +298,17 @@ Hooks.once("init", () => {
       14: pointField(),
       15: pointField()
     }),
-    default: {
-      8: 0,
-      9: 1,
-      10: 2,
-      11: 3,
-      12: 4,
-      13: 5,
-      14: 7,
-      15: 9
-    }
+    default: PointCostMenu.defaultCosts
   });
+
+  game.settings.registerMenu(moduleId, "pointCostMenu", {
+    name: "DND5EPointBuy.PointCosts.name",
+    label: "DND5EPointBuy.PointCosts.label",
+    hint: "DND5EPointBuy.PointCosts.hint",
+    icon: "fa-solid fa-calculator",
+    type: PointCostMenu,
+    restricted: true
+  })
 });
 
 /**
