@@ -12,6 +12,11 @@
     "lang": "en",
     "name": "English",
     "path": "lang/en.json"
+    },
+    {
+    "lang": "it",
+    "name": "Italiano",
+    "path": "lang/it.json"
   }],
   "description": "Simplify and automate point buy for dnd5e",
   "authors": [
