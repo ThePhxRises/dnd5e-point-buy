@@ -325,7 +325,7 @@ function addContextMenuEntries(app, entries) {
     icon: "<i class=\"fa-solid fa-calculator\"></i>",
     condition: (html) => {
       const actor = liToActor(html);
-      return (actor.type === "character") && actor.isOwner;
+      return (actor?.type === "character") && actor?.isOwner;
     },
     callback: (html) => {
       new PointBuyCalculator({document: liToActor(html)}).render({force: true});

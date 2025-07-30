@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.9.2
+
+- Fixed issue preventing display of context menu for actors in compendiums
+
 ## 0.9.1
 
 - Updated Italian translation (Thanks @GregoryWarn)

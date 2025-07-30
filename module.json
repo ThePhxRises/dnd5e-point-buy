@@ -1,7 +1,7 @@
 {
   "id": "dnd5e-point-buy",
   "title": "D&D Point Buy Calculator",
-  "version": "0.9.0",
+  "version": "AUTOMATIC",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
