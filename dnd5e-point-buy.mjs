@@ -208,7 +208,12 @@ class PointCostMenu extends api.HandlebarsApplicationMixin(api.Application) {
       12: 8,
       13: 9,
       14: 10,
-      15: 11
+      15: 11,
+      16: 12,
+      17: 13,
+      18: 14,
+      19: 15,
+      20: 16
     }
   }
 
@@ -284,7 +289,7 @@ Hooks.once("init", () => {
     scope: "world",
     config: true,
     type: new fields.NumberField({required: true, nullable: false}),
-    default: 27
+    default: 50
   });
 
   const pointField = () => new fields.NumberField({required: true, nullable: false});
