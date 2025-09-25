@@ -197,14 +197,18 @@ class PointCostMenu extends api.HandlebarsApplicationMixin(api.Application) {
 
   static get defaultCosts() {
     return {
-      8: 0,
-      9: 1,
-      10: 2,
-      11: 3,
-      12: 4,
-      13: 5,
-      14: 7,
-      15: 9
+      4: 0,
+      5: 1,
+      6: 2,
+      7: 3,
+      8: 4,
+      9: 5,
+      10: 6,
+      11: 7,
+      12: 8,
+      13: 9,
+      14: 10,
+      15: 11
     }
   }
 
@@ -289,6 +293,10 @@ Hooks.once("init", () => {
     scope: "world",
     config: false,
     type: new fields.SchemaField({
+      4: pointField(),
+      5: pointField(),
+      6: pointField(),
+      7: pointField(),
       8: pointField(),
       9: pointField(),
       10: pointField(),
@@ -296,7 +304,12 @@ Hooks.once("init", () => {
       12: pointField(),
       13: pointField(),
       14: pointField(),
-      15: pointField()
+      15: pointField(),
+      16: pointField(),
+      17: pointField(),
+      18: pointField(),
+      19: pointField(),
+      20: pointField()
     }),
     default: PointCostMenu.defaultCosts
   });
