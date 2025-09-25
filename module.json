@@ -53,7 +53,7 @@
       }
     ]
   },
-  "manifest": "https://raw.githubusercontent.com/ThePhxRises/dnd5e-point-buy/master/module.json",
+  "manifest": "https://github.com/ThePhxRises/dnd5e-point-buy/releases/latest/download/module.json",
   "download": "AUTOMATIC",
   "flags": {
     "hotReload": {
